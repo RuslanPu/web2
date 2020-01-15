@@ -11,7 +11,7 @@ public class Main {
         ApiServlet apiServlet = new ApiServlet();
 
         ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
-        context.addServlet(new ServletHolder(apiServlet), "/api");
+        context.addServlet(new ServletHolder(apiServlet), "/api/*");
 
         Server server = new Server(8080);
         server.setHandler(context);

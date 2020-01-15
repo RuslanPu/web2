@@ -6,8 +6,15 @@
 </head>
 <body>
 
-<form method="GET">
-    <button type="submit" value="Login"></button>
+<form action="authPage.html" method="GET">
+    Email : <input type="text" name="${email}">
+    Password : <input type="text" name="${password}">
+    <input type="submit" value="Login">
+</form>
+<form action="authPage.html" method="POST">
+    Email : <input type="text" name="${email}">
+    Password : <input type="text" name="${password}">
+    <input type="submit" value="Login">
 </form>
 
 </body>
