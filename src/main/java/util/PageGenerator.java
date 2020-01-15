@@ -11,6 +11,14 @@ import java.io.Writer;
 import java.util.Map;
 
 public class PageGenerator {
+    private static PageGenerator INSTANCE;
+
+    public static PageGenerator getInstance() {
+        if (INSTANCE == null) {
+            INSTANCE = new PageGenerator();
+        }
+        return INSTANCE;
+    }
     private static final String HTML_DIR = "templates";
 
     private final Configuration cfg;
