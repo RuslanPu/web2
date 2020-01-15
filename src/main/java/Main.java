@@ -9,12 +9,20 @@ public class Main {
 
     public static void main(String[] args) throws Exception{
         ApiServlet apiServlet = new ApiServlet();
+        RegistrationServlet regServlet = new RegistrationServlet();
+        LoginServlet logServlet = new LoginServlet();
 
         ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
         context.addServlet(new ServletHolder(apiServlet), "/api/*");
+        context.addServlet(new ServletHolder(regServlet),"/register");
+        context.addServlet(new ServletHolder(logServlet),"/login");
+
+
+
 
         Server server = new Server(8080);
         server.setHandler(context);
+
 
         server.start();
         server.join();
