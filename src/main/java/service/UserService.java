@@ -2,10 +2,7 @@ package service;
 
 import model.User;
 
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicLong;
 
 public class UserService {
@@ -19,39 +16,60 @@ public class UserService {
 
 
     public List<User> getAllUsers() {
-        return null;
+        List<User> user = new ArrayList(dataBase.keySet());
+        return user;
     }
 
     public User getUserById(Long id) {
-        return null;
+        return dataBase.get(id);
+
     }
 
     public boolean addUser(User user) {
-        return false;
+        if (dataBase.containsValue(user)) {
+            return false;
+        } else {
+
+            dataBase.put(maxId.addAndGet(1), user);
+            return true;
+        }
     }
 
     public void deleteAllUser() {
-
+        dataBase.clear();
     }
 
     public boolean isExistsThisUser(User user) {
-        return false;
+        if (dataBase.containsValue(user)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public List<User> getAllAuth() {
-        return  null;
+        List<User> userAuth = new ArrayList(authMap.keySet());
+        return userAuth;
     }
 
     public boolean authUser(User user) {
-        return false;
+        if (authMap.containsValue(user)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public void logoutAllUsers() {
-
+        authMap.clear();
     }
 
     public boolean isUserAuthById(Long id) {
-        return false;
+        if (authMap.containsKey(id)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
 }
